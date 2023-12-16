@@ -1,0 +1,25 @@
+/*
+* This is a general purpose Gradle build file for Lab6
+*/
+plugins {
+  id 'base'
+  id "com.moowork.node" version "1.3.1"
+  }
+
+node {
+   download = true
+   version = "14.17.1"
+   npmVersion = "6.14.13"
+}
+
+apply plugin: 'war'
+
+war {
+    from(','){
+        include "*"
+	include "src/**"
+	include "node_modules/**"
+    }
+    archiveFileName = "reactApp"
+    destinationDir(file("dist"))
+}
